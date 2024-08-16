@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="331de949-206e-4fc5-8bb8-d03bd2998264" name="Changes" comment="BigIntegerImplementation added">
+    <list default="true" id="331de949-206e-4fc5-8bb8-d03bd2998264" name="Changes" comment="scratchMult draft">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/calc/BigIntegerImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calc/BigIntegerImplementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/calc/MultFromScratch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/calc/MultFromScratch.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,11 +84,28 @@
       <option name="project" value="LOCAL" />
       <updated>1723827061162</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="scratchMult draft">
+      <option name="closed" value="true" />
+      <created>1723833713374</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1723833713374</updated>
+    </task>
+    <task id="LOCAL-00003" summary="scratchMult draft">
+      <option name="closed" value="true" />
+      <created>1723833770427</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723833770427</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="BigIntegerImplementation added" />
-    <option name="LAST_COMMIT_MESSAGE" value="BigIntegerImplementation added" />
+    <MESSAGE value="scratchMult draft" />
+    <option name="LAST_COMMIT_MESSAGE" value="scratchMult draft" />
   </component>
 </project>

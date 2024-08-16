@@ -9,6 +9,8 @@ public class MultFromScratch {
 
         // prolly have to store result in an array and somewhat split because it wont even fit into long
 
+
+
         // draft in head, will perform digit bz digit multiplication with carry, yet to implement
         return 0;
     }
