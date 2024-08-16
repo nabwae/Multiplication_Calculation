@@ -5,14 +5,14 @@ package calc;
 import java.math.BigInteger;
 
 public class BigIntegerImplementation {
-    public static BigInteger multBig(String A, String B){
+    public static BigInteger multBig(String num1, String num2){
         // Store values of A and B from args/userInput
-        BigInteger num1 = new BigInteger(String.valueOf(A));
-        BigInteger num2 = new BigInteger(String.valueOf(B));
+        BigInteger numB1 = new BigInteger(String.valueOf(num1));
+        BigInteger numB2 = new BigInteger(String.valueOf(num2));
         // BigInteger object to store result of multiplication
-        BigInteger result;
-        // Calculation of result using BigInteger, could be simplified and performed just using: return num1.multiply(num2);
-        result = num1.multiply(num2);
-        return result;
+        BigInteger resultB;
+        // Calculation of result using BigInteger, could be simplified and performed just using: return numB1.multiply(numB2);
+        resultB = numB1.multiply(numB2);
+        return resultB;
     }
 }
