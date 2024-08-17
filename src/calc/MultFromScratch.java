@@ -2,8 +2,6 @@
 
 package calc;
 
-import java.util.Arrays;
-
 public class MultFromScratch {
     public static String scratchMult(String num1, String num2){
         int len1 = num1.length();
