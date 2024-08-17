@@ -21,4 +21,8 @@ public class MultFromScratchTest {
     void testNumberFour(){
         assertEquals( "0", MultFromScratch.scratchMult("4564745", "0"));
     }
+    @Test
+    void testNumberFive(){
+        assertEquals( "0", MultFromScratch.scratchMult("0", "0"));
+    }
 }

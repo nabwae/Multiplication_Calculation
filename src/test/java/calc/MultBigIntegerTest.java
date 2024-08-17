@@ -25,5 +25,10 @@ public class MultBigIntegerTest {
         String multBigOutput = String.valueOf(MultBigInteger.multBig("4564745", "0"));
         assertEquals( "0", multBigOutput);
     }
+    @Test
+    void testNumberFive(){
+        String multBigOutput = String.valueOf(MultBigInteger.multBig("0", "0"));
+        assertEquals( "0", multBigOutput);
+    }
 
 }
