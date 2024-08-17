@@ -37,6 +37,11 @@ public class MultFromScratch {
             leadZeroCheck = false;
             resultString.append(i);
         }
+        // Return 0 if string is empty because all zeros got removed in StringBuilder
+        if(resultString.isEmpty()){
+            return "0";
+        }
+        // If it is not empty return result
         return String.valueOf(resultString);
     }
 }

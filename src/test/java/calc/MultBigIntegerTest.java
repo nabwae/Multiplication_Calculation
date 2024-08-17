@@ -20,4 +20,10 @@ public class MultBigIntegerTest {
         String multBigOutput = String.valueOf(MultBigInteger.multBig("456", "89"));
         assertEquals( "40584", multBigOutput);
     }
+    @Test
+    void testNumberFour(){
+        String multBigOutput = String.valueOf(MultBigInteger.multBig("4564745", "0"));
+        assertEquals( "0", multBigOutput);
+    }
+
 }
