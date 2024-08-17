@@ -30,12 +30,15 @@ public class MultFromScratch {
 
         //System.out.print(Arrays.toString(result));
         StringBuilder resultString = new StringBuilder();
-
+        // We check for leading zeroes, if they are present we do not append them, first non-zero sets the check to false
+        boolean leadZeroCheck = true;
         for(int i : result){
+            if(i == 0 && leadZeroCheck){
+                continue;
+            }
+            leadZeroCheck = false;
             resultString.append(i);
         }
-        // * This prints out leading zeroes that are introduced in int[] result = new int[len1 + len2]; where we make sure there is enough space
-        // * even if we work with many carries//
         return String.valueOf(resultString);
     }
 }
