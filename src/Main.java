@@ -25,8 +25,6 @@ public class Main {
                     System.out.println("Invalid algorithm choice. Usage: --alg1 or --alg2");
                     break;
             }
-//            System.out.println(multBig(args[0], args[1]));
-//            System.out.println(scratchMult(args[0], args[1]));
         }
     }
 }
