@@ -29,8 +29,13 @@ public class MultFromScratch {
         }
 
         //System.out.print(Arrays.toString(result));
+        StringBuilder resultString = new StringBuilder();
 
-        // draft in head, will perform digit by digit multiplication with carry, yet to implement
-        return Arrays.toString(result);
+        for(int i : result){
+            resultString.append(i);
+        }
+        // * This prints out leading zeroes that are introduced in int[] result = new int[len1 + len2]; where we make sure there is enough space
+        // * even if we work with many carries//
+        return String.valueOf(resultString);
     }
 }
