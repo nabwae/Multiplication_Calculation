@@ -25,4 +25,12 @@ public class MultFromScratchTest {
     void testNumberFive(){
         assertEquals( "0", MultFromScratch.scratchMult("0", "0"));
     }
+    @Test
+    void testNumberSix(){
+        assertEquals( "-839090472", MultFromScratch.scratchMult("-577886", "1452"));
+    }
+    @Test
+    void testNumberSeven(){
+        assertEquals( "839090472", MultFromScratch.scratchMult("-577886", "-1452"));
+    }
 }

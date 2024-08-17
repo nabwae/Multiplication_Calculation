@@ -30,5 +30,15 @@ public class MultBigIntegerTest {
         String multBigOutput = String.valueOf(MultBigInteger.multBig("0", "0"));
         assertEquals( "0", multBigOutput);
     }
+    @Test
+    void testNumberSix(){
+        String multBigOutput = String.valueOf(MultBigInteger.multBig("-577886", "1452"));
+        assertEquals( "-839090472", multBigOutput);
+    }
+    @Test
+    void testNumberSeven(){
+        String multBigOutput = String.valueOf(MultBigInteger.multBig("-577886", "-1452"));
+        assertEquals( "839090472", multBigOutput);
+    }
 
 }
