@@ -10,6 +10,10 @@ public class MultFromScratchTest {
         assertEquals( "137174210013717420998628257899862825790", MultFromScratch.scratchMult("12345678901234567890", "11111111111111111111"));
     }
     @Test
+    void testNumberOne(){
+        assertEquals( "12", MultFromScratch.scratchMult("4", "3"));
+    }
+    @Test
     void testNumberTwo(){
         assertEquals( "16942816224", MultFromScratch.scratchMult("789654", "21456"));
     }

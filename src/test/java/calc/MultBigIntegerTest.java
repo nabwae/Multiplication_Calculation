@@ -6,9 +6,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MultBigIntegerTest {
     @Test
-    void testValuesFromAssignment(){
+    void testValuesFromAssignment(){ // Testing numbers from the assignment paper
         String multBigOutput = String.valueOf(MultBigInteger.multBig("12345678901234567890", "11111111111111111111"));
         assertEquals( "137174210013717420998628257899862825790", multBigOutput);
+    }
+    @Test
+    void testAlgsAgainstEachOther(){ // Testing results of algorithms against each other
+        String multBigOutput = String.valueOf(MultBigInteger.multBig("12345678901234567890", "11111111111111111111"));
+        assertEquals(MultFromScratch.scratchMult("12345678901234567890", "11111111111111111111"), multBigOutput);
+    }
+    @Test
+    void testNumberOne(){
+        String multBigOutput = String.valueOf(MultBigInteger.multBig("4", "3"));
+        assertEquals( "12", multBigOutput);
     }
     @Test
     void testNumberTwo(){
