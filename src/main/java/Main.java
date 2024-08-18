@@ -1,6 +1,6 @@
 // Richard S. - Multiplication Calculation
 
-import static calc.BigIntegerImplementation.*;
+import static calc.MultBigInteger.*;
 import static calc.MultFromScratch.*;
 
 public class Main {

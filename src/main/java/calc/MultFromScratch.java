@@ -4,10 +4,22 @@ package calc;
 
 public class MultFromScratch {
     public static String scratchMult(String num1, String num2){
+        // Implementation of check that checks whether there is minus symbol in the numbers, if it is then increment negative counter
+        // Later we use counter to represent positive result if negativeCounter == 0 || 2, negative result if negativeCounter == 1
+        int negativeCounter = 0;
+        if(String.valueOf(num1.charAt(0)).equals("-")){
+            negativeCounter += 1;
+            num1 = num1.substring(1);
+        }
+        if(String.valueOf(num2.charAt(0)).equals("-")){
+            negativeCounter += 1;
+            num2 = num2.substring(1);
+        }
+
         int len1 = num1.length();
         int len2 = num2.length();
 
-        // prolly have to store result in an array and somewhat split because it wont even fit into long
+        // Array to fit multiplication result even if we have a lot of carries
         int[] result = new int[len1 + len2];
 
         // Simulation of calculation on paper we take rightmost number in num2 and multiply it digit by digit with digits from num1 and iterate thru that
@@ -34,9 +46,18 @@ public class MultFromScratch {
             if(i == 0 && leadZeroCheck){
                 continue;
             }
+            if(negativeCounter == 1){ // If one number was negative we append - symbol (Implementation above)
+                negativeCounter = 0;
+                resultString.append("-");
+            }
             leadZeroCheck = false;
             resultString.append(i);
         }
+        // Return 0 if string is empty because all zeros got removed in StringBuilder
+        if(resultString.isEmpty()){
+            return "0";
+        }
+        // If it is not empty return result
         return String.valueOf(resultString);
     }
 }

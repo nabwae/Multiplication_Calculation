@@ -4,7 +4,7 @@ package calc;
 
 import java.math.BigInteger;
 
-public class BigIntegerImplementation {
+public class MultBigInteger {
     public static BigInteger multBig(String num1, String num2){
         // Store values of A and B from args/userInput
         BigInteger numB1 = new BigInteger(String.valueOf(num1));
