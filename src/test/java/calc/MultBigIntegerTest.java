@@ -2,53 +2,129 @@ package calc;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.math.BigInteger;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultBigIntegerTest {
+
     @Test
-    void testValuesFromAssignment(){ // Testing numbers from the assignment paper
-        String multBigOutput = String.valueOf(MultBigInteger.multBig("12345678901234567890", "11111111111111111111"));
-        assertEquals( "137174210013717420998628257899862825790", multBigOutput);
-    }
-    @Test
-    void testAlgsAgainstEachOther(){ // Testing results of algorithms against each other
-        String multBigOutput = String.valueOf(MultBigInteger.multBig("12345678901234567890", "11111111111111111111"));
-        assertEquals(MultFromScratch.scratchMult("12345678901234567890", "11111111111111111111"), multBigOutput);
-    }
-    @Test
-    void testNumberOne(){
-        String multBigOutput = String.valueOf(MultBigInteger.multBig("4", "3"));
-        assertEquals( "12", multBigOutput);
-    }
-    @Test
-    void testNumberTwo(){
-        String multBigOutput = String.valueOf(MultBigInteger.multBig("789654", "21456"));
-        assertEquals( "16942816224", multBigOutput);
-    }
-    @Test
-    void testNumberThree(){
-        String multBigOutput = String.valueOf(MultBigInteger.multBig("456", "89"));
-        assertEquals( "40584", multBigOutput);
-    }
-    @Test
-    void testNumberFour(){
-        String multBigOutput = String.valueOf(MultBigInteger.multBig("4564745", "0"));
-        assertEquals( "0", multBigOutput);
-    }
-    @Test
-    void testNumberFive(){
-        String multBigOutput = String.valueOf(MultBigInteger.multBig("0", "0"));
-        assertEquals( "0", multBigOutput);
-    }
-    @Test
-    void testNumberSix(){
-        String multBigOutput = String.valueOf(MultBigInteger.multBig("-577886", "1452"));
-        assertEquals( "-839090472", multBigOutput);
-    }
-    @Test
-    void testNumberSeven(){
-        String multBigOutput = String.valueOf(MultBigInteger.multBig("-577886", "-1452"));
-        assertEquals( "839090472", multBigOutput);
+    void testValuesFromAssignment() {
+        String multBigOutput = String.valueOf(
+                MultBigInteger.multBig(
+                        "12345678901234567890",
+                        "11111111111111111111"
+                )
+        );
+
+        assertEquals(
+                "137174210013717420998628257899862825790",
+                multBigOutput
+        );
     }
 
+    @Test
+    void testAlgsAgainstEachOther() {
+        String multBigOutput = String.valueOf(
+                MultBigInteger.multBig(
+                        "12345678901234567890",
+                        "11111111111111111111"
+                )
+        );
+
+        assertEquals(
+                MultFromScratch.scratchMult(
+                        "12345678901234567890",
+                        "11111111111111111111"
+                ),
+                multBigOutput
+        );
+    }
+
+    @Test
+    void shouldMultiplySingleDigitNumbers() {
+        assertEquals(
+                BigInteger.valueOf(12),
+                MultBigInteger.multBig("4", "3")
+        );
+    }
+
+    @Test
+    void shouldMultiplyMultiDigitNumbers() {
+        assertEquals(
+                new BigInteger("16942816224"),
+                MultBigInteger.multBig("789654", "21456")
+        );
+
+        assertEquals(
+                new BigInteger("40584"),
+                MultBigInteger.multBig("456", "89")
+        );
+    }
+
+    @Test
+    void shouldReturnZeroWhenFirstNumberIsZero() {
+        assertEquals(
+                BigInteger.ZERO,
+                MultBigInteger.multBig("0", "123456")
+        );
+    }
+
+    @Test
+    void shouldReturnZeroWhenSecondNumberIsZero() {
+        assertEquals(
+                BigInteger.ZERO,
+                MultBigInteger.multBig("123456", "0")
+        );
+    }
+
+    @Test
+    void shouldReturnZeroWhenBothNumbersAreZero() {
+        assertEquals(
+                BigInteger.ZERO,
+                MultBigInteger.multBig("0", "0")
+        );
+    }
+
+    @Test
+    void shouldMultiplyNegativeAndPositiveNumbers() {
+        assertEquals(
+                new BigInteger("-839090472"),
+                MultBigInteger.multBig("-577886", "1452")
+        );
+    }
+
+    @Test
+    void shouldMultiplyTwoNegativeNumbers() {
+        assertEquals(
+                new BigInteger("839090472"),
+                MultBigInteger.multBig("-577886", "-1452")
+        );
+    }
+
+    @Test
+    void shouldMultiplyPositiveAndNegativeNumbers() {
+        assertEquals(
+                new BigInteger("-839090472"),
+                MultBigInteger.multBig("577886", "-1452")
+        );
+    }
+
+    @Test
+    void shouldHandleLeadingZeroes() {
+        assertEquals(
+                new BigInteger("123"),
+                MultBigInteger.multBig("00123", "1")
+        );
+
+        assertEquals(
+                new BigInteger("123"),
+                MultBigInteger.multBig("123", "0001")
+        );
+
+        assertEquals(
+                new BigInteger("56088"),
+                MultBigInteger.multBig("000123", "000456")
+        );
+    }
 }

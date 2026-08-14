@@ -2,18 +2,33 @@
 
 package calc;
 
+import static util.NumValidator.removeLeadingZeroes;
+import static util.NumValidator.validateNumber;
+
 public class MultFromScratch {
-    public static String scratchMult(String num1, String num2){
-        // Implementation of check that checks whether there is minus symbol in the numbers, if it is then increment negative counter
-        // Later we use counter to represent positive result if negativeCounter == 0 || 2, negative result if negativeCounter == 1
-        int negativeCounter = 0;
-        if(String.valueOf(num1.charAt(0)).equals("-")){
-            negativeCounter += 1;
+    public static String scratchMult(String num1, String num2) {
+
+        validateNumber(num1);
+        validateNumber(num2);
+
+        boolean negative = false;
+        if (num1.charAt(0) == '-') {
+            negative = !negative;
             num1 = num1.substring(1);
         }
-        if(String.valueOf(num2.charAt(0)).equals("-")){
-            negativeCounter += 1;
+
+        if (num2.charAt(0) == '-') {
+            negative = !negative;
             num2 = num2.substring(1);
+        }
+
+        // Remove leading zeroes
+        num1 = removeLeadingZeroes(num1);
+        num2 = removeLeadingZeroes(num2);
+
+        // If either number is zero, the result is zero.
+        if (num1.equals("0") || num2.equals("0")) {
+            return "0";
         }
 
         int len1 = num1.length();
@@ -22,42 +37,46 @@ public class MultFromScratch {
         // Array to fit multiplication result even if we have a lot of carries
         int[] result = new int[len1 + len2];
 
-        // Simulation of calculation on paper we take rightmost number in num2 and multiply it digit by digit with digits from num1 and iterate thru that
-        for(int i = len2 - 1; i >= 0; i--){
-            int digit2 = Integer.parseInt(String.valueOf(num2.charAt(i)));
-            for(int j = len1 - 1; j >= 0; j--){
-                int digit1 = Integer.parseInt(String.valueOf(num1.charAt(j)));
+        /*
+         * Grade-school multiplication:
+         *
+         *      123
+         *    x 456
+         *    -----
+         *
+         * We multiply every digit of num1 by every digit of num2
+         * and place the result at the appropriate position.
+         */
+        for(int i = len2 - 1; i >= 0; i--) {
+            int digit2 = num2.charAt(i) - '0';
+            for(int j = len1 - 1; j >= 0; j--) {
+                int digit1 = num1.charAt(j) - '0';
 
-                // Multiplication of two digits (from num1 and num2) and adding their sum into result array starting at the last index and moving left
-                int prod = digit1 * digit2;
-                // Sum our product with carry if its present
-                int addition = result[i + j + 1] + prod;
-                // We put last digit of multiplication into the array hence % usage, and with / usage we store carry in -1 index
-                result[i + j + 1] = addition % 10;
-                result[i + j] += addition / 10;
+                int product = digit1 * digit2;
+
+                int position = i + j + 1;
+                int sum = result[position] + product;
+
+                result[position] = sum % 10;
+                result[position - 1] += sum / 10;
             }
         }
 
-        //System.out.print(Arrays.toString(result));
-        StringBuilder resultString = new StringBuilder();
-        // We check for leading zeroes, if they are present we do not append them, first non-zero sets the check to false
+        final StringBuilder resultString = new StringBuilder();
         boolean leadZeroCheck = true;
-        for(int i : result){
-            if(i == 0 && leadZeroCheck){
+        for(int digit : result){
+            if(digit == 0 && leadZeroCheck){
                 continue;
             }
-            if(negativeCounter == 1){ // If one number was negative we append - symbol (Implementation above)
-                negativeCounter = 0;
-                resultString.append("-");
-            }
+
             leadZeroCheck = false;
-            resultString.append(i);
+            resultString.append(digit);
         }
-        // Return 0 if string is empty because all zeros got removed in StringBuilder
-        if(resultString.isEmpty()){
-            return "0";
+
+        if (negative) {
+            resultString.insert(0, '-');
         }
-        // If it is not empty return result
-        return String.valueOf(resultString);
+
+        return resultString.toString();
     }
 }

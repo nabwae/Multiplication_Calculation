@@ -5,36 +5,102 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultFromScratchTest {
+
     @Test
-    void testValuesFromAssignment(){
-        assertEquals( "137174210013717420998628257899862825790", MultFromScratch.scratchMult("12345678901234567890", "11111111111111111111"));
+    void testValuesFromAssignment() {
+        assertEquals(
+                "137174210013717420998628257899862825790",
+                MultFromScratch.scratchMult(
+                        "12345678901234567890",
+                        "11111111111111111111"
+                )
+        );
     }
+
     @Test
-    void testNumberOne(){
-        assertEquals( "12", MultFromScratch.scratchMult("4", "3"));
+    void shouldMultiplySingleDigitNumbers() {
+        assertEquals(
+                "12",
+                MultFromScratch.scratchMult("4", "3")
+        );
     }
+
     @Test
-    void testNumberTwo(){
-        assertEquals( "16942816224", MultFromScratch.scratchMult("789654", "21456"));
+    void shouldMultiplyMultiDigitNumbers() {
+        assertEquals(
+                "16942816224",
+                MultFromScratch.scratchMult("789654", "21456")
+        );
+
+        assertEquals(
+                "40584",
+                MultFromScratch.scratchMult("456", "89")
+        );
     }
+
     @Test
-    void testNumberThree(){
-        assertEquals( "40584", MultFromScratch.scratchMult("456", "89"));
+    void shouldReturnZeroWhenFirstNumberIsZero() {
+        assertEquals(
+                "0",
+                MultFromScratch.scratchMult("0", "123456")
+        );
     }
+
     @Test
-    void testNumberFour(){
-        assertEquals( "0", MultFromScratch.scratchMult("4564745", "0"));
+    void shouldReturnZeroWhenSecondNumberIsZero() {
+        assertEquals(
+                "0",
+                MultFromScratch.scratchMult("4564745", "0")
+        );
     }
+
     @Test
-    void testNumberFive(){
-        assertEquals( "0", MultFromScratch.scratchMult("0", "0"));
+    void shouldReturnZeroWhenBothNumbersAreZero() {
+        assertEquals(
+                "0",
+                MultFromScratch.scratchMult("0", "0")
+        );
     }
+
     @Test
-    void testNumberSix(){
-        assertEquals( "-839090472", MultFromScratch.scratchMult("-577886", "1452"));
+    void shouldMultiplyNegativeAndPositiveNumbers() {
+        assertEquals(
+                "-839090472",
+                MultFromScratch.scratchMult("-577886", "1452")
+        );
     }
+
     @Test
-    void testNumberSeven(){
-        assertEquals( "839090472", MultFromScratch.scratchMult("-577886", "-1452"));
+    void shouldMultiplyTwoNegativeNumbers() {
+        assertEquals(
+                "839090472",
+                MultFromScratch.scratchMult("-577886", "-1452")
+        );
+    }
+
+    @Test
+    void shouldMultiplyPositiveAndNegativeNumbers() {
+        assertEquals(
+                "-839090472",
+                MultFromScratch.scratchMult("577886", "-1452")
+        );
+    }
+
+    @Test
+    void shouldHandleLeadingZeroes() {
+        assertEquals(
+                "123",
+                MultFromScratch.scratchMult("00123", "1")
+        );
+
+        assertEquals(
+                "123",
+                MultFromScratch.scratchMult("123", "0001")
+        );
+
+        assertEquals(
+                "56088",
+                MultFromScratch.scratchMult("000123", "000456")
+        );
     }
 }
